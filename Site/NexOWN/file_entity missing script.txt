@@ -1,0 +1,14 @@
+USE nexown_dev;
+
+CREATE TABLE IF NOT EXISTS `file_metadata` (
+  `fid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'The file_managed.fid of the metadata.',
+  `name` varchar(255) NOT NULL COMMENT 'The name of the metadata (e.g. ’width’).',
+  `value` longblob COMMENT 'The value of the metadata (e.g. ’200px’).'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Cache images dimensions.';
+
+CREATE TABLE IF NOT EXISTS `file_type` (
+  `type` varchar(255) NOT NULL DEFAULT '' COMMENT 'The machine name of the file type.',
+  `label` varchar(255) NOT NULL DEFAULT '' COMMENT 'The human readable name of the file type.',
+  `description` mediumtext NOT NULL COMMENT 'A brief description of this file type.',
+  `mimetypes` longblob COMMENT 'Mimetypes mapped to this file type.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the settings for file types.';

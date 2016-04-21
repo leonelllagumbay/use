@@ -1,0 +1,77 @@
+http://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#putobjectacl
+
+https://portal.exoscale.ch/storage
+
+http://pithos.io/api.html
+
+http://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html
+
+sample
+
+https://community.exoscale.ch/documentation/storage/quick-start/
+
+http://docs.aws.amazon.com/aws-sdk-php/v2/guide/installation.html
+
+patch
+https://github.com/justafish/drupal_amazons3
+
+authentication
+http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html
+https://mothereff.in/utf-8 -> utf 8 encoder
+http://www.freeformatter.com/hmac-generator.html#ad-output ->  hmac
+http://www.motobit.com/util/base64-decoder-encoder.asp -> base64
+
+
+Authorization = "AWS" + " " + AWSAccessKeyId + ":" + Signature;
+
+Signature = Base64( HMAC-SHA1( YourSecretAccessKeyID, UTF-8-Encoding-Of( StringToSign ) ) );
+
+StringToSign = HTTP-Verb + "\n" +
+	Content-MD5 + "\n" +
+	Content-Type + "\n" +
+	Date + "\n" +
+	CanonicalizedAmzHeaders +
+	CanonicalizedResource;
+
+CanonicalizedResource = [ "/" + Bucket ] +
+	<HTTP-Request-URI, from the protocol name up to the query string> +
+	[ subresource, if present. For example "?acl", "?location", "?logging", or "?torrent"];
+
+CanonicalizedAmzHeaders = <described below>
+
+1. create composer.json file
+2. composer install or php composer.phar install
+
+For public
+>> UPDATE IGNORE file_managed SET uri = REPLACE(uri, 'public://', 's3://') WHERE uri LIKE 'public://%';
+
+For private
+>> UPDATE IGNORE file_managed SET uri = REPLACE(uri, 'private://', 's3://') WHERE uri LIKE 'private://%';
+
+Drupal Web service: https://www.drupal.org/node/790416
+
+File upload
+	get CSRF here: http://drupal-7-41.dd:8083/services/session/token
+
+-----------Composer module--------------------
+https://www.drupal.org/project/composer
+drush dl composer-8.x-1.x
+
+
+
+Copy something from this system to some other system: (use linux bash)
+public://
+scp -p nexown.prod@srv-3325.devcloud.hosting.acquia.com:/mnt/gfs/home/nexown/prod/sites/app/files/* ./pubprod
+
+
+private://
+scp -p nexown.prod@srv-3325.devcloud.hosting.acquia.com:/vol/ebs1/gfs/nexownhyfv3mrj7i/sites/app/files-private/* ./priprod
+
+
+/vol/ebs1/gfs/nexownhyfv3mrj7i/sites/app/files-private
+/vol/ebs1/gfs/nexownhyfv3mrj7i/sites/app/files-private
+
+
+in sites/app local
+drush s3fs-refresh-cache
+drush s3fs-copy-local

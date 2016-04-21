@@ -1,0 +1,191 @@
+
+	"A Simple AngularJS Scaffolding"
+
+Requires: [node installed, command terminal]
+
+1. Run the following: (*To run at once and with -g flag use: npm intall -g grunt-cli bower karma ...)
+
+/* Save to angularjsscaffolding1.bash 
+	run  chmod +x angularjsscaffolding1.bash
+	     ./angularjsscaffolding1.bash
+*/
+
+/* start bash */
+	npm install grunt-cli --save-dev
+	npm install bower --save-dev
+	npm install yo --save-dev
+	npm install karma --save-dev
+	npm install karma-jasmine --save-dev
+	npm install karma-chrome-launcher --save-dev
+	npm install generator-karma-require --save-dev
+	npm install generator-angular-require --save-dev
+	npm npm install generator-angular --save
+	npm install generator-requirejs-jasmine-karma --save-dev
+
+
+/* end bash */
+	yo angular-require AppName (this might take long)
+		*Which modules would you like to include? (Just include all)
+		*Running npm install & bower install.
+		*Conflict package.json. Overwrite Y.
+
+/ *If your npm version is outdated, run:
+   npm install -g npm
+   then run again the yo angular-require AppName
+*/
+		
+2. Execute a build
+	
+	grunt build /* grunt --force build */
+
+3. Work with your files by using
+
+	grunt serve
+
+	*If you found error in using yo angular-require:route TheRoute below,
+	run the following command
+	
+	bower install angular-route --save instead of bower install angular-route --save-dev
+	under the current working project directory.
+
+4. Open the project Gruntfile.js config
+
+	Minify css:
+	Compile Sass to Css and generates necessary files if requested
+	In compass, then options add the following config
+	outputStyle: 'compressed'
+	*Change also the minified css to the build/styles folder
+	cssDir: '<%= yeoman.app %>/build/styles',
+	change the corresponding index.html to apply this change
+
+	Minify javascript using r.js compile config
+	In requirejs, then dist, then options, change dir: '<%= yeoman.dist %>/scripts/',
+	to dir: '<%= yeoman.app %>/build/scripts/'
+	*create build and scripts folder if necessary
+	*Reference this script in your page in your development or production just replacing 
+	the script tag to:
+	
+	 <script src="bower_components/requirejs/require.js" data-main="build/scripts/main.js"></script>
+
+5. Open /app/scripts/main.js
+	Add the following line of codes before this line of codes angular.resumeBootstrap([app.name]):
+	angular.bootstrap(document, [app.name]);
+	angular.resumeBootstrap();
+
+	Make sure that the app is returned and app.name also must be defined
+
+	*Important note: since we are manually bootstraping the app here, 
+	we don't necessarily need defining the "ng-app" 
+	in the html or any html elements.
+
+	*Some angular modules may not defined in app.js like ngCookies. To overcome this just add the required dependencies.
+	For example you may define these items:
+	'angular-cookies', 'angular-sanitize', and so on
+	and in controller definition enclose the generated ngThing to 'ngThing'. For example ngCookies to 'ngCookies'.
+	
+
+6. Configure the testing
+	
+	Run grunt test for the first time and consider the defaults 
+	and take note the results:
+
+	*If it says that the karma.conf.js does not exist, move this file from test
+	directory to the project directory then run the grunt test again
+
+	*If it says "Invalid config file! SyntaxError: Unexpected token &,
+	then fix this by troubleshooting the file just open karma.conf.js
+	then find all &#34; character and replace this by double quotes " character, then save
+	
+	*If running in windows, take note that / does not represent the current directory, use ./ or
+	nothing instead.
+	In karma.conf.js replace '/test/test-main.js' in files to 'test/test-main.js'
+
+	*Run grunt test again
+	If the result contains Executed 0 of 0 ERROR, its time to put our test specs
+	and source files. But before that let us add more third part apps
+	used with jasmine. the SinonJS
+
+7. Install SinonJS used for testing and mocking/faking servers
+
+	bower install sinon
+
+8. Include source and spec files in karma.conf.js
+	files: [] config
+
+	{ pattern: 'bower_components/angular/angular.js', included: false},
+		
+	{ pattern: 'bower_components/angular-animate/angular-animate.js', included: false},
+		
+	{ pattern: 'bower_components/angular-cookies/angular-cookies.js', included: false},
+		
+	{ pattern: 'bower_components/angular-mocks/angular-mocks.js', included: false},
+		
+	{ pattern: 'bower_components/angular-route/angular-route.js', included: false},
+		
+	{ pattern: 'bower_components/angular-sanitize/angular-sanitize.js', included: false},
+		
+	{ pattern: 'bower_components/angular-touch/angular-touch.js', included: false},
+		
+	{ pattern: 'bower_components/bootstrap/dist/js/bootstrap.js', included: false},		
+	{ pattern: 'bower_components/jquery/dist/jquery.js', included: false},
+		
+	{ pattern: 'bower_components/sinon/lib/sinon.js', included: false},		
+	{ pattern: 'app/scripts/app.js', included: false},
+  
+	
+	'test/test-main.js',
+	// source files with include false,
+	// spec files with included false too
+	// Example from the generated files
+	{ pattern: 'app/scripts/controllers/main.js', included: false},
+	{ pattern: 'test/spec/controllers/mainSpec.js', included: false},
+	{ pattern: 'app/scripts/controllers/about.js', included: false},
+	{ pattern: 'test/spec/controllers/aboutSpec.js', included: false},
+
+9. Exclude the app/main.js in karma.conf.js
+
+	exclude: [
+         
+		'app/main.js'
+    
+	]
+
+10. Example controller
+
+	*Note the following yo generator we can use
+	yo angular-require:route myroute [--uri=my/route/]
+	yo angular-require:controller TheController
+	yo angular-require:directive TheDirective
+	yo angular-require:filter TheFilter
+	yo angular-require:view TheView
+	yo angualr-require:service TheService [also use factory, provider, value, constant]
+	
+
+	a. Create a new controller
+	yo angular-require:controller TheController
+	b. navigate to the /app/scripts/controllers/  and /test/spec/controllerss and you should see the new included
+	file thecontroller.js and thecontrollerSpec.js respectively. Cool huh!
+
+	c. Add these two files to the karma.config.js files: [].
+	Modify thecontrollerSpec.js as you like to see the test results.
+
+11. grunt build and explore the automated tasks generated for you.
+12. Congrats and enjoy building apps!
+	
+
+	
+More Info:
+https://github.com/aaronallport/generator-angular-require
+	
+
+	
+
+	
+		
+		
+	
+
+	
+	
+	
+	

@@ -1,0 +1,32 @@
+selim.akyol@nexown.ch
+Profile Details
+Password and Security
+API Keys
+Preferences
+Your API credentials for your personal account
+
+API Keys and API Endpoints allow you to access all services on the Exoscale platform programmatically.
+
+API Key
+
+Y_sbljHGekK5N4ItIWP6UQvvmjIXrUGBuT6mmelGThvuY8VrMD9iW7K4O7sdoZ8B6RclFdli_AQkyThUGhSYuw
+COPY TO CLIPBOARD
+Secret Key
+
+a3o3NzCV7bimLPwyec_H9bsy4mXZEOq3rAkDKX-5BBGxEnqpJ4-eII5pnbF-tpJcjJhmD7SdSckJ6l2TR39heA
+COPY TO CLIPBOARD
+Organization ID
+
+selim.akyol@nexown.ch
+COPY TO CLIPBOARD
+Compute API Endpoint
+
+https://api.exoscale.ch/compute
+COPY TO CLIPBOARD
+Storage API Endpoint
+
+https://sos.exo.io
+COPY TO CLIPBOARD
+DNS API Endpoint
+
+https://api.exoscale.ch/dns

@@ -1,0 +1,4 @@
+Network
+
+netstat -a -o -n
+taskkill /F /PID 2600

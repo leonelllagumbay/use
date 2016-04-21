@@ -1,0 +1,156 @@
+Large Scale Crawling with Nutch
+
+Reasons:
+-mature, business-friendly license, community
+-scalability
+	- tried and tested on very large scale
+	- hadoop cluster : installation and skills
+-features
+	- index with solr
+	- page rank implementation
+	- extended with plugins
+
+
+-hadoop based == batch processing == high latency
+	-
+
+-javascript/ajax not supported (yet)
+
+Use cases:
+> Crawl for IR
+	- Generic or vertical
+	- index and search with solr
+	- single node to large clusters on Cloud
+	- data mining
+	- NLP (eg. Sentiment analysis)
+	- ML
+	- MAHOUT /UIMA / Gate
+
+Fetch
+Parse
+Update
+Generate
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Apache Nutch notes
+
+https://hbase.apache.org/cygwin.html
+>> remove sshd
+cygrunsrv --remove sshd
+https://www.cygwin.com/ml/cygwin/2013-02/msg00185.html
+
+
+>> http://ant.apache.org/
+>> https://wiki.apache.org/nutch/NutchRESTAPI
+>> https://ant.apache.org/manual/running.html
+>> https://ant.apache.org/manual/install.html
+>> https://ant.apache.org/manual/install.html#setup
+>> https://ant.apache.org/manual/install.html#windows
+>> https://ant.apache.org/manual/install.html#getBinary
+>> http://ant.apache.org/bindownload.cgi
+
+>> https://www.cygwin.com/
+
+http://stackoverflow.com/questions/21116916/hbase-error-java-home-is-not-set-and-java-could-not-be-found
+http://lucene.apache.org/solr/
+https://cwiki.apache.org/confluence/display/solr/Installing+Solr
+https://cwiki.apache.org/confluence/display/solr/Running+Solr
+
+https://wiki.apache.org/nutch/AdvancedAjaxInteraction
+https://github.com/apache/nutch/tree/trunk/src/plugin/protocol-selenium
+https://github.com/apache/nutch/tree/trunk/src/plugin/protocol-interactiveselenium
+https://github.com/momer/nutch-selenium
+
+http://mirror.rise.ph/apache/lucene/solr/5.2.0/
+
+Solr run command in solr home dir
+./bin/solr.cmd start 
+# just ignore the find error
+
+
+>> video
+https://www.youtube.com/watch?v=Npie0UoyZdI
+https://www.youtube.com/watch?v=baxhI6Wkov8&ebc=ANyPxKrlIjtGENRalKQHXlKVlM11JLWV5YRLGq56kkzYx8D2Aci4iro6KjQVpPWyHvva2tBBUVtSyhONultMVMKnsPbaWKtkgg
+https://www.youtube.com/watch?v=pzMpwW4ppRM
+
+>> docs
+https://en.wikipedia.org/wiki/Web_crawler
+
+http://tomcat.apache.org/download-80.cgi
+
+https://pascaldimassimo.com/2010/06/11/how-to-re-crawl-with-nutch/
+https://cwiki.apache.org/confluence/display/solr/Using+JavaScript
+
+
+Important results:
+https://cwiki.apache.org/confluence/display/solr/Running+Solr
+http://localhost:8983/solr/nexownsolr/select?q=video#/
+
+Working versions:
+
+The most recents compatibles versions that you can have now are:
+
+nutch 2.3.1
+hbase 0.98.17-hadoop2
+hadoop 2.5.2
+
+The recommended Gora backends for this Nutch release are 
+Apache Avro 1.7.6 
+Apache Hadoop 1.2.1 and 2.5.2 Apache HBase 0.98.8-hadoop2 (although also tested with 1.X) 
+Apache Cassandra 2.0.2 
+Apache Solr 4.10.3  http://archive.apache.org/dist/lucene/solr/4.10.3/
+MongoDB 2.6.X 
+Apache Accumlo 1.5.1 
+Apache Spark 1.4.1 - 
+See more at: http://nutch.apache.org/#sthash.teuiS4lg.dpuf
+
+http://www.lostinsoftware.com/2015/11/integrating-nutch-2-3-hbase-and-solr/
+https://github.com/apache/nutch/archive/release-2.3.tar.gz
+
+http://hbase.apache.org/book.html#quickstart
+https://whiscardz.wordpress.com/2015/11/10/installing-solr-4-10-on-tomcat-7/
+
+
+set ANT_HOME=C:\Program Files\Ant
+set PATH=%PATH%;%ANT_HOME%/bin
+
+>> Compatible installers
+
+https://archive.apache.org/dist/nutch/2.2.1/
+http://archive.apache.org/dist/hbase/hbase-0.90.4/
+https://archive.apache.org/dist/lucene/solr/4.3.0/
+
+https://github.com/momer/nutch-selenium
+
+>> Windows workaround
+https://github.com/congainc/patch-hadoop_7682-1.0.x-win
+
+>> Java 8 on Ubuntu
+http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/
+
+hbase start
+java export variables
+JAVA_HOME=/usr/lib/jvm/jdk1.7.0
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export JRE_HOME
+export PATH
+
+>> Kill port
+netstat -lpn |grep :8080
+kill 7888 -> resulting pid from above
+
+nutch-site.xml
+
+<property>
+  <name>plugin.includes</name>
+  <value>protocol-httpclient|urlfilter-regex|index-(basic|more)|query-(basic|site|url|lang)
+  |indexer-solr|nutch-extensionpoints|protocol-httpclient|urlfilter-regex|parse-(text|html|msexcel|msword|mspowerpoint|pdf)
+  |summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)protocol-http|urlfilter-regex|parse-(html|tika|metatags)
+  |index-(basic|anchor|more|metadata)</value>
+</property>
+
+https://wiki.apache.org/nutch/NutchTutorial
+
+

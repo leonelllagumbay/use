@@ -1,0 +1,26 @@
+Configuration > Media > S3 File System
+
+> Amazon Web Services Credentials
+1. Amazon Web Services Access Key : Y_sbljHGekK5N4ItIWP6UQvvmjIXrUGBuT6mmelGThvuY8VrMD9iW7K4O7sdoZ8B6RclFdli_AQkyThUGhSYuw
+2. Amazon Web Services Secret Key : a3o3NzCV7bimLPwyec_H9bsy4mXZEOq3rAkDKX-5BBGxEnqpJ4-eII5pnbF-tpJcjJhmD7SdSckJ6l2TR39heA
+3. S3 Bucket Name : nexown
+
+> Advanced Configuration Options
+1. Use a Custom Host : check
+2. Hostname: https://sos.exo.io
+3. Use S3 for public:// files: check
+4. Use S3 for private:// files: check
+
+
+[Save configuration]
+
+
+===========================================================================================================================
+
+
+Configuration > Media > File System
+1. Default download method : Private files served from Amazon S3
+
+
+[Save configuration]
+
