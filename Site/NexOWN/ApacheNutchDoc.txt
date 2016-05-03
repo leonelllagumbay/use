@@ -131,7 +131,7 @@ http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/
 
 hbase start
 java export variables
-JAVA_HOME=/usr/lib/jvm/jdk1.7.0
+JAVA_HOME=/usr/lib/jvm/java-8-oracle #for Error: JAVA_HOME is not set.
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export JRE_HOME
@@ -152,5 +152,13 @@ nutch-site.xml
 </property>
 
 https://wiki.apache.org/nutch/NutchTutorial
+
+>>Nutch APIs
+https://fossies.org/linux/www/apache-nutch-2.3.1-src.tar.gz/apache-nutch-2.3.1/docs/api/overview-summary.html
+
+>> Quick fix trick: delete runtime folder then run ant runtime
+
+>> Nutch plugins wiki
+https://wiki.apache.org/nutch/AboutPlugins
 
 

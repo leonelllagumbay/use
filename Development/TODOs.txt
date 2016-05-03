@@ -1,0 +1,5 @@
+TODO:
+
+1. Clone JoinERNI stage
+2. Copy Virtual box installer
+3. Watch the VAIs

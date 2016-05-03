@@ -1,0 +1,6 @@
+SendGrid Libraries:
+
+https://sendgrid.com/docs/Integrate/libraries.html
+https://sendgrid.com
+
+API key: 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
